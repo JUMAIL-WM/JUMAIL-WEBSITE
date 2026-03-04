@@ -66,8 +66,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-semibold text-foreground/90 mb-4 sm:mb-6 max-w-5xl"
           >
-            IT & Admin Support | Data Entry & BPO Executive | Microsoft Student
-            Ambassador - Gold
+           Microsoft Student Ambassador - Gold | IT & Admin Support | Data Entry & BPO Executive | IT Help Desk | Software Engineering Undergraduate | CRM & Database Management | Technical Support
           </motion.h2>
 
           <motion.p
@@ -76,13 +75,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-10"
           >
-            I am a Settlement Officer at Port City BPO, ensuring accurate and
-            efficient financial transaction processing. Alongside this, I serve as
-            a Gold Microsoft Student Ambassador, expanding my expertise in AI and
-            Large Language Models. Currently pursuing a BSc (Hons) Software
-            Engineering at Cardiff Metropolitan University (ICBT Colombo), I am
-            passionate about combining academic knowledge with industry experience
-            to build innovative tech solutions.
+           
           </motion.p>
 
           <motion.div
