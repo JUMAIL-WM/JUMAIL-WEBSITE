@@ -189,7 +189,7 @@ export const SkillsSection = () => {
 "Google Docs",
 "Microsoft Teams",
 "CRM Software",
-"Online Databases",
+"Databases",
 "Data Entry Systems",
 "Email Communication",
 "File Management",
