@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Neon Cyber Portfolio Design System
+   Primary: Purple (#a855f7) | Secondary: Electric Blue (#3b82f6)
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark cyber background */
+    --background: 240 20% 4%;
+    --foreground: 210 40% 98%;
+
+    /* Cards with glassmorphism */
+    --card: 240 15% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 15% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary: Neon Purple */
+    --primary: 270 91% 65%;
+    --primary-foreground: 240 20% 4%;
+
+    /* Secondary: Electric Blue */
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 240 20% 4%;
+
+    /* Muted for subtle elements */
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    /* Accent: Magenta pink blend */
+    --accent: 300 76% 60%;
+    --accent-foreground: 240 20% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 15%;
+    --ring: 270 91% 65%;
+
+    --radius: 0.75rem;
+
+    /* Neon glow colors */
+    --neon-purple: 270 91% 65%;
+    --neon-blue: 217 91% 60%;
+    --neon-cyan: 180 100% 50%;
+    --neon-pink: 330 100% 65%;
+
+    /* Gradient definitions */
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 65%) 0%, hsl(217 91% 60%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(270 91% 65% / 0.5) 0%, hsl(217 91% 60% / 0.5) 100%);
+
+    /* Shadow definitions */
+    --shadow-neon-purple: 0 0 20px hsl(270 91% 65% / 0.5), 0 0 40px hsl(270 91% 65% / 0.3);
+    --shadow-neon-blue: 0 0 20px hsl(217 91% 60% / 0.5), 0 0 40px hsl(217 91% 60% / 0.3);
+    --shadow-glow: 0 0 30px hsl(270 91% 65% / 0.4), 0 0 60px hsl(217 91% 60% / 0.2);
+
+    --sidebar-background: 240 15% 6%;
+    --sidebar-foreground: 240 5% 65%;
+    --sidebar-primary: 270 91% 65%;
+    --sidebar-primary-foreground: 240 20% 4%;
+    --sidebar-accent: 240 10% 12%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 240 10% 20%;
+    --sidebar-ring: 270 91% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.5);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.7);
+  }
+}
+
+@layer utilities {
+  /* Neon text glow effects */
+  .text-glow-purple {
+    text-shadow: 0 0 10px hsl(var(--neon-purple) / 0.8), 
+                 0 0 20px hsl(var(--neon-purple) / 0.6), 
+                 0 0 30px hsl(var(--neon-purple) / 0.4);
+  }
+
+  .text-glow-blue {
+    text-shadow: 0 0 10px hsl(var(--neon-blue) / 0.8), 
+                 0 0 20px hsl(var(--neon-blue) / 0.6), 
+                 0 0 30px hsl(var(--neon-blue) / 0.4);
+  }
+
+  .text-glow-gradient {
+    background: linear-gradient(135deg, hsl(var(--neon-purple)) 0%, hsl(var(--neon-blue)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px hsl(var(--neon-purple) / 0.5));
+  }
+
+  /* Glassmorphism card */
+  .glass-card {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Neon border effects */
+  .neon-border {
+    border: 1px solid hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.3), 
+                inset 0 0 10px hsl(var(--primary) / 0.1);
+  }
+
+  .neon-border-blue {
+    border: 1px solid hsl(var(--secondary) / 0.5);
+    box-shadow: 0 0 10px hsl(var(--secondary) / 0.3), 
+                inset 0 0 10px hsl(var(--secondary) / 0.1);
+  }
+
+  /* Hover glow effect */
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.5), 
+                0 0 40px hsl(var(--primary) / 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Animated gradient background */
+  .animated-gradient {
+    background: linear-gradient(
+      -45deg,
+      hsl(var(--background)),
+      hsl(240 15% 6%),
+      hsl(270 20% 8%),
+      hsl(217 20% 6%)
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating animation */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Pulse glow animation */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.4); 
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6), 
+                  0 0 60px hsl(var(--secondary) / 0.4); 
+    }
+  }
+
+  /* Line animation for timeline */
+  .timeline-line {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--neon-purple)) 0%,
+      hsl(var(--neon-blue)) 100%
+    );
+  }
+
+  /* Grid pattern overlay */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Fade in animation */
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Stagger animation delay utilities */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
