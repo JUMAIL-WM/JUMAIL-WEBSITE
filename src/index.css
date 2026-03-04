@@ -186,7 +186,10 @@
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
   }
-
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
   /* Pulse glow animation */
   .pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
