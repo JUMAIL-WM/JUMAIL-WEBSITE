@@ -173,15 +173,31 @@ export const SkillsSection = () => {
           className="mt-12 sm:mt-16"
         >
           <h3 className="text-xl font-display font-semibold text-foreground text-center mb-6">
-            Tools & Technologies I Use
+            Professional Skills, Tools & Work Platforms
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              "Microsoft Excel", "Microsoft Word",  "Figma", "Canva", "Photoshop", 
-              "VS Code", "Git", "GitHub", "Google Sheets", "Google Docs",
-              "Data Entry Systems", "CRM Software", "Email Communication", "Microsoft Teams",
-              "Online Databases", "File Management", "Data Processing", "Reporting Tools",
-              "Document Management", "Spreadsheet Analysis", "Office Administration"
+             "Microsoft Excel",
+"Microsoft Word",
+"Figma",
+"Canva",
+"Photoshop",
+"VS Code",
+"Git",
+"GitHub",
+"Google Sheets",
+"Google Docs",
+"Microsoft Teams",
+"CRM Software",
+"Online Databases",
+"Data Entry Systems",
+"Email Communication",
+"File Management",
+"Data Processing",
+"Reporting Tools",
+"Document Management",
+"Spreadsheet Analysis",
+"Office Administration"
 
              
             ].map((tool, index) => (
