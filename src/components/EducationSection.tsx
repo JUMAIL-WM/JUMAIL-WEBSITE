@@ -1,8 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Award, BookOpen, BadgeCheck } from "lucide-react";
+import { GraduationCap, Award, BookOpen } from "lucide-react";
 
-const education1 = {
+const education = {
   degree: "Bachelor of Software Engineering",
   university: "Cardiff Metropolitan University | ICBT Colombo",
   duration: "2026 - Present",
@@ -23,103 +23,87 @@ const education2 = {
   description:
     "Focused on practical software development and core computing concepts, strengthening my skills through hands-on coursework and mini projects.",
   achievements: [
-    "Studied programming fundamentals and database concepts.",
-    "Built practical applications and academic mini-projects.",
-    "Improved problem-solving and software development skills.",
+    "Studying programming fundamentals and database concepts",
+    "Building practical applications and academic mini-projects",
+    "Improving problem-solving and software development skills",
   ],
 };
 
-type Cert = {
-  id: number;
-  title: string;
-  issuer: string;
-  date: string;
-  icon: any;
-};
-
-const certifications: Cert[] = [
-  // Already had
- 
-
-  // From your LinkedIn screenshots (Add full list)
-  { id: 5, title: "2026 Microsoft Student Ambassador", issuer: "Microsoft Student Ambassadors", date: "Jan 2026", icon: BadgeCheck },
-  { id: 6, title: "Getting Started with AWS for Games – Part I", issuer: "Amazon Web Services (AWS)", date: "Dec 2025", icon: Award },
-  { id: 8, title: "Gemini Certified Educator", issuer: "Google for Education", date: "Nov 2025", icon: Award },
-
-  { id: 11, title: "Explore AI Level 1", issuer: "Microsoft Student Ambassadors – Imagine Cup", date: "May 2025", icon: BadgeCheck },
-  { id: 13, title: "Skills Boost Arcade Base Camp (May 2025)", issuer: "Google Cloud Arcade Facilitator Program", date: "May 2025", icon: Award },
-
- 
-  { id: 19, title: "GenAI 101 with Pieces", issuer: "Pieces", date: "Nov 2024", icon: Award },
-  { id: 20, title: "Postman API Fundamentals Student Expert", issuer: "LetsUpgrade", date: "Jan 2025", icon: Award },
-  { id: 21, title: "Google Analytics Certification", issuer: "Google Cloud Skills Boost", date: "Nov 2024", icon: Award },
-
-  { id: 22, title: "WSO2 Certified Ballerina Developer – Swan Lake", issuer: "WSO2", date: "Jun 2024", icon: Award },
+const certifications = [
+  { id: 1, title: "2026 Microsoft Student Ambassador", issuer: "Microsoft Student Ambassadors", date: "Jan 2026", icon: Award },
+  { id: 2, title: "Getting Started with AWS for Games – Part I", issuer: "Amazon Web Services (AWS)", date: "Dec 2025", icon: BookOpen },
+  { id: 3, title: "Gemini Certified Educator", issuer: "Google for Education", date: "Nov 2025", icon: Award },
+  { id: 4, title: "Explore AI Level 1", issuer: "Microsoft Student Ambassadors – Imagine Cup", date: "May 2025", icon: Award },
+  { id: 5, title: "Skills Boost Arcade Base Camp", issuer: "Google Cloud Arcade Facilitator Program", date: "May 2025", icon: BookOpen },
+  { id: 6, title: "GenAI 101 with Pieces", issuer: "Pieces", date: "Nov 2024", icon: BookOpen },
+  { id: 7, title: "Postman API Fundamentals Student Expert", issuer: "LetsUpgrade", date: "Jan 2025", icon: BookOpen },
 ];
 
-export const EducationSection = () => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const EducationCard = ({
-    data,
-    Icon,
-    accent = "primary",
-    title = "Education",
-  }: {
-    data: typeof education1;
-    Icon: any;
-    accent?: "primary" | "secondary";
-    title?: string;
-  }) => {
-    const accentText = accent === "primary" ? "text-primary" : "text-secondary";
-    const accentBg =
-      accent === "primary"
-        ? "from-primary/20 to-secondary/20"
-        : "from-secondary/20 to-primary/20";
-
-    return (
-      <div className="glass-card rounded-2xl p-6 sm:p-8 h-full neon-border relative overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
-        <div className="relative">
-          <div className="flex items-center gap-4 mb-6">
-            <div
-              className={`w-14 h-14 rounded-xl bg-gradient-to-br ${accentBg} flex items-center justify-center`}
-            >
-              <Icon className={`w-7 h-7 ${accentText}`} />
-            </div>
-            <div>
-              <h3 className="text-xl font-display font-semibold text-foreground">{title}</h3>
-              <p className="text-sm text-muted-foreground">{data.duration}</p>
-            </div>
+function EducationCard({
+  icon: Icon,
+  title = "Education",
+  duration,
+  degree,
+  university,
+  description,
+  bulletsTitle,
+  bullets,
+  iconBg = "from-primary/20 to-secondary/20",
+  iconColor = "text-primary",
+}: {
+  icon: any;
+  title?: string;
+  duration: string;
+  degree: string;
+  university: string;
+  description: string;
+  bulletsTitle: string;
+  bullets: string[];
+  iconBg?: string;
+  iconColor?: string;
+}) {
+  return (
+    <div className="glass-card rounded-2xl p-6 sm:p-8 neon-border relative overflow-hidden">
+      <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+      <div className="relative">
+        <div className="flex items-center gap-4 mb-6">
+          <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${iconBg} flex items-center justify-center`}>
+            <Icon className={`w-7 h-7 ${iconColor}`} />
           </div>
-
-          <h4 className="text-lg font-semibold text-foreground mb-2">{data.degree}</h4>
-          <p className="text-primary font-medium mb-4">{data.university}</p>
-          <p className="text-muted-foreground mb-6">{data.description}</p>
-
-          <div className="space-y-2">
-            <h5 className="text-sm font-semibold text-foreground">
-              {data === education1 ? "Achievements" : "Highlights"}
-            </h5>
-            {data.achievements.map((a, i) => (
-              <div key={i} className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 mt-2 rounded-full bg-gradient-to-r from-primary to-secondary" />
-                <span className="text-sm text-muted-foreground">{a}</span>
-              </div>
-            ))}
+          <div>
+            <h3 className="text-xl font-display font-semibold text-foreground">{title}</h3>
+            <p className="text-sm text-muted-foreground">{duration}</p>
           </div>
         </div>
+
+        <h4 className="text-lg font-semibold text-foreground mb-2">{degree}</h4>
+        <p className="text-primary font-medium mb-4">{university}</p>
+        <p className="text-muted-foreground mb-6">{description}</p>
+
+        <div className="space-y-2">
+          <h5 className="text-sm font-semibold text-foreground">{bulletsTitle}</h5>
+          {bullets.map((b, i) => (
+            <div key={i} className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 mt-2 rounded-full bg-gradient-to-r from-primary to-secondary" />
+              <span className="text-sm text-muted-foreground">{b}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    );
-  };
+    </div>
+  );
+}
+
+export const EducationSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="education" className="py-20 sm:py-32 relative overflow-hidden">
+    <section id="education" className="py-20 sm:py-32 relative">
+      {/* NOTE: mobile clipping avoid panna overflow-hidden remove panniten */}
       <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-secondary/5 blur-3xl rounded-full" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative" ref={ref}>
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -136,60 +120,82 @@ export const EducationSection = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mt-4" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* LEFT */}
+        {/* ✅ Responsive grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          {/* LEFT: 2 education cards */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-6"
           >
-            <div className="space-y-6">
-              <EducationCard data={education1} Icon={GraduationCap} accent="primary" title="Education" />
-              <EducationCard data={education2 as any} Icon={BookOpen} accent="secondary" title="Education" />
-            </div>
+            <EducationCard
+              icon={GraduationCap}
+              duration={education.duration}
+              degree={education.degree}
+              university={education.university}
+              description={education.description}
+              bulletsTitle="Achievements"
+              bullets={education.achievements}
+              iconBg="from-primary/20 to-secondary/20"
+              iconColor="text-primary"
+            />
+
+            <EducationCard
+              icon={BookOpen}
+              duration={education2.duration}
+              degree={education2.degree}
+              university={education2.university}
+              description={education2.description}
+              bulletsTitle="Highlights"
+              bullets={education2.achievements}
+              iconBg="from-secondary/20 to-primary/20"
+              iconColor="text-secondary"
+            />
           </motion.div>
 
-          {/* RIGHT */}
+          {/* RIGHT: certifications */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
+            className="lg:pt-2"
           >
+            <h3 className="text-xl font-display font-semibold text-foreground mb-6">
+              Professional Certifications
+            </h3>
+
             <div className="space-y-4">
-              <h3 className="text-xl font-display font-semibold text-foreground mb-6">
-                Professional Certifications
-              </h3>
+              {certifications.map((cert, index) => {
+                const Icon = cert.icon;
+                return (
+                  <motion.div
+                    key={cert.id}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.35, delay: 0.35 + index * 0.08 }}
+                    className="glass-card rounded-xl p-4 sm:p-5 hover-glow group"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 shrink-0 rounded-lg bg-secondary/20 flex items-center justify-center group-hover:bg-secondary/30 transition-colors">
+                        <Icon className="w-6 h-6 text-secondary" />
+                      </div>
 
-              {/* ✅ IMPORTANT: NO max-height / NO overflow -> full list will show */}
-              <div className="space-y-4">
-                {certifications.map((cert, index) => {
-                  const Icon = cert.icon;
-                  return (
-                    <motion.div
-                      key={cert.id}
-                      initial={{ opacity: 0, y: 16 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.35, delay: 0.35 + index * 0.03 }}
-                      className="glass-card rounded-xl p-4 sm:p-5 hover-glow group"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center group-hover:bg-secondary/30 transition-colors">
-                          <Icon className="w-6 h-6 text-secondary" />
-                        </div>
-
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold text-foreground truncate">{cert.title}</h4>
-                          <div className="flex items-center gap-2 text-sm">
-                            <span className="text-muted-foreground">{cert.issuer}</span>
-                            <span className="w-1 h-1 rounded-full bg-muted-foreground" />
-                            <span className="text-primary">{cert.date}</span>
-                          </div>
+                      <div className="min-w-0">
+                        {/* ✅ mobile-க்கு truncate remove (நீ வேண்டும்னா add back) */}
+                        <h4 className="font-semibold text-foreground leading-snug">
+                          {cert.title}
+                        </h4>
+                        <div className="flex flex-wrap items-center gap-2 text-sm">
+                          <span className="text-muted-foreground">{cert.issuer}</span>
+                          <span className="w-1 h-1 rounded-full bg-muted-foreground" />
+                          <span className="text-primary">{cert.date}</span>
                         </div>
                       </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
