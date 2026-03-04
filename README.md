@@ -3,8 +3,7 @@
 Personal portfolio website for **Mohammed Jumail** showcasing skills, projects, experience, education, certifications, and contact details.
 
 ## 🔗 Live Demo
-- Lovable: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID  
-- Custom Domain (if any): https://your-domain.com
+- https://jumail-website-0039.vercel.app/
 
 ---
 
@@ -23,7 +22,6 @@ Personal portfolio website for **Mohammed Jumail** showcasing skills, projects, 
 - **Tailwind CSS**
 - **shadcn/ui**
 - **Framer Motion**
-- (Optional) **Supabase** / **Web3Forms** for contact form
 
 ---
 
@@ -102,15 +100,11 @@ If you want simple HTML/API form:
 
 ## 🌍 Deploy
 
-### Deploy with Lovable
+### Deploy with Vercal
 
-1. Open the project: [https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID)
-2. Share → **Publish**
+1. Open the project: https://jumail-website-0039.vercel.app/
 
 ### Custom Domain
-
-Project → Settings → Domains → **Connect Domain**
-Docs: [https://docs.lovable.dev/features/custom-domain#custom-domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
 
 ---
 
